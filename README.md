@@ -6,7 +6,7 @@ Unobtrusively replacing the tab close icons when not in focus / mouse over.
 
 Also adds a total tabs count to the status bar, which can be disabled via config.
 
-![tab-numbers-screenshot](screenshots/preview.png)
+![tab-numbers-screenshot](https://raw.githubusercontent.com/MRodalgaard/atom-tab-numbers/master/screenshots/preview.png)
 
 > Contributions, bug reports and feature requests are very welcome.
 
