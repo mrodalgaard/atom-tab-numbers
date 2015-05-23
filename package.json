@@ -2,7 +2,7 @@
   "name": "tab-numbers",
   "main": "./lib/tab-numbers",
   "version": "0.0.0",
-  "description": "Numbers on your Atom Tabs",
+  "description": "Numbers on your Atom editor tabs",
   "keywords": [
   ],
   "repository": "https://github.com/mrodalgaard/atom-tab-numbers",
