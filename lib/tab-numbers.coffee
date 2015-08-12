@@ -10,10 +10,14 @@ module.exports = TabNumbers =
 
   deactivate: ->
     @tabNumbersView?.destroy()
+    @tabNumbersView = null
     @statusBarTile?.destroy()
     @statusBarTile = null
 
   consumeStatusBar: (statusBar) ->
-    if atom.config.get('tab-numbers.showNumberOfOpenTabs')
-      @tabNumbersView ?= new TabNumbersView()
-      @statusBarTile = statusBar.addLeftTile(item: @tabNumbersView, priority: 200)
+    atom.config.observe 'tab-numbers.showNumberOfOpenTabs', (newValue) =>
+      if newValue
+        @tabNumbersView ?= new TabNumbersView()
+        @statusBarTile = statusBar.addLeftTile(item: @tabNumbersView, priority: 200)
+      else
+        @deactivate()

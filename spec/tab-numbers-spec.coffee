@@ -38,29 +38,25 @@ describe 'Tab Counter', ->
     jasmine.attachToDOM(workspaceElement)
 
     waitsForPromise ->
+      atom.packages.activatePackage 'tab-numbers'
       atom.packages.activatePackage 'status-bar'
 
   describe 'total tabs count', ->
     it 'shows number of open tabs in status bar', ->
+      tabsCount = workspaceElement.querySelector '.status-bar .tab-numbers .tabs-count'
+
+      expect(tabsCount.innerHTML).toBe '0'
+
       waitsForPromise ->
-        atom.packages.activatePackage 'tab-numbers'
-
+        atom.workspace.open 'sample1.txt'
+        atom.workspace.open 'sample2.txt'
       runs ->
-        tabsCount = workspaceElement.querySelector '.status-bar .tab-numbers .tabs-count'
-
-        expect(tabsCount.innerHTML).toBe '0'
-
-        waitsForPromise ->
-          atom.workspace.open 'sample1.txt'
-          atom.workspace.open 'sample2.txt'
-        runs ->
-          expect(tabsCount.innerHTML).toBe '2'
+        expect(tabsCount.innerHTML).toBe '2'
 
     it 'removes total tabs count with config', ->
-      tabsCount = workspaceElement.querySelector '.status-bar .tab-numbers'
+      tabsElement = workspaceElement.querySelector '.status-bar .tab-numbers'
+      expect(tabsElement).not.toBe null
 
-      waitsForPromise ->
-        atom.config.set('tab-numbers.showNumberOfOpenTabs', false)
-        atom.packages.activatePackage 'tab-numbers'
-      runs ->
-        expect(tabsCount).toBe null
+      atom.config.set('tab-numbers.showNumberOfOpenTabs', false)
+      tabsElement = workspaceElement.querySelector '.status-bar .tab-numbers'
+      expect(tabsElement).toBe null

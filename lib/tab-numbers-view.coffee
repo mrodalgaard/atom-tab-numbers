@@ -13,23 +13,20 @@ class TabNumbersView extends View
 
   initialize: ->
     @subscriptions = new CompositeDisposable
-
-    for pane in atom.workspace.getPanes()
-      @nTabs += pane.getItems().length
-    @update(0)
+    @update()
 
     @subscriptions.add atom.workspace.onDidAddPaneItem (event) =>
-      @update(1)
+      @update()
 
     @subscriptions.add atom.workspace.onDidDestroyPaneItem (event) =>
-      @update(-1)
+      @update()
 
   destroy: ->
     @subscriptions.dispose()
     @detach()
 
-  update: (n) ->
-    @nTabs += n
+  update: ->
+    @nTabs = atom.workspace.getPaneItems().length
 
     @tabNumbers.toggleClass('text-warning', @nTabs >= 5 && @nTabs < 10)
     @tabNumbers.toggleClass('text-error', @nTabs >= 10)
