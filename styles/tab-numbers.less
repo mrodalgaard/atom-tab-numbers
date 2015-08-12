@@ -9,8 +9,14 @@ atom-pane.active .tab-bar {
     .close-icon {
       // Do not hide number on "One Dark" theme
       transform: none;
+
+      // No animation on "Material UI"
+      -webkit-animation: initial;
+
       &::before {
+        font-family: Helvetica, Arial, sans-serif;
         content: @content;
+        font-size: 12px;
         font-weight: bold;
       }
     }
