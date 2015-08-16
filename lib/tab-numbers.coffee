@@ -1,4 +1,4 @@
-TabNumbersView = require './tab-numbers-view'
+TabNumbersView = null
 
 module.exports = TabNumbers =
   config:
@@ -17,6 +17,7 @@ module.exports = TabNumbers =
   consumeStatusBar: (statusBar) ->
     atom.config.observe 'tab-numbers.showNumberOfOpenTabs', (newValue) =>
       if newValue
+        TabNumbersView ?= require './tab-numbers-view'
         @tabNumbersView ?= new TabNumbersView()
         @statusBarTile = statusBar.addLeftTile(item: @tabNumbersView, priority: 200)
       else
