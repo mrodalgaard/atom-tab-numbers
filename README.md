@@ -1,4 +1,4 @@
-# Tab Numbers Atom Package
+# Tab Numbers Atom Package [![Build Status](https://travis-ci.org/mrodalgaard/atom-tab-numbers.svg)](https://travis-ci.org/mrodalgaard/atom-tab-numbers)
 
 Numbers on your Atom tabs for quick jumping (cmd/ctrl + 1..9).
 
