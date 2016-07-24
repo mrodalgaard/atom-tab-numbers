@@ -1,23 +1,22 @@
-// The ui-variables file is provided by base themes provided by Atom.
-//
-// See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
-// for a full listing of what's available.
 @import "ui-variables";
 
 atom-pane.active .tab-bar {
   .tab-numbers-style(@content) {
-    .close-icon {
-      // Do not hide number on "One Dark" theme
-      transform: none;
+    // Do not apply in compact mode
+    @media (min-width: 1280px) and (min-height: 800px) {
+      .close-icon {
+        // Do not hide number on "One Dark" theme
+        transform: none;
 
-      // No animation on "Material UI"
-      -webkit-animation: initial;
+        // No animation on "Material UI"
+        -webkit-animation: initial;
 
-      &::before {
-        font-family: Helvetica, Arial, sans-serif;
-        content: @content;
-        font-size: 12px;
-        font-weight: bold;
+        &::before {
+          font-family: Helvetica, Arial, sans-serif;
+          content: @content;
+          font-size: 12px;
+          font-weight: bold;
+        }
       }
     }
   }

@@ -1,12 +1,17 @@
 describe 'Tab Numbers', ->
-  workspaceElement = null
+  {workspaceElement, prevHeight, prevWidth} = []
 
   beforeEach ->
     workspaceElement = atom.views.getView(atom.workspace)
     jasmine.attachToDOM(workspaceElement)
+    [prevHeight, prevWidth] = atom.getCurrentWindow().getContentSize()
+    atom.getCurrentWindow().setContentSize(1500, 1500)
 
     waitsForPromise ->
       atom.packages.activatePackage 'tab-numbers'
+
+  afterEach ->
+    atom.getCurrentWindow().setContentSize(prevHeight, prevWidth)
 
   describe 'tab style layout', ->
     beforeEach ->
@@ -19,16 +24,16 @@ describe 'Tab Numbers', ->
       tabsIcons = workspaceElement.querySelectorAll '.pane .tab .close-icon'
 
       expect(workspaceElement.querySelectorAll('.pane > .tab-bar').length).toBe 1
-      expect(getComputedStyle(tabsIcons[0], ':before').content).toBe '\'1\''
-      expect(getComputedStyle(tabsIcons[1], ':before').content).toBe '\'2\''
+      expect(getComputedStyle(tabsIcons[0], ':before').content).toBe '\"1\"'
+      expect(getComputedStyle(tabsIcons[1], ':before').content).toBe '\"2\"'
 
     it 'hides number on focus', ->
       tabsIcon = workspaceElement.querySelector '.pane .tab .close-icon'
-      expect(getComputedStyle(tabsIcon, ':before').content).toBe '\'1\''
+      expect(getComputedStyle(tabsIcon, ':before').content).toBe '\"1\"'
 
       workspaceElement.querySelector('.pane .tab').classList.add 'hover'
 
-      expect(getComputedStyle(tabsIcon, ':before').content).not.toBe '\'1\''
+      expect(getComputedStyle(tabsIcon, ':before').content).not.toBe '\"1\"'
 
 describe 'Tab Counter', ->
   workspaceElement = null
