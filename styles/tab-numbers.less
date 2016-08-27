@@ -2,23 +2,25 @@
 
 atom-pane.active .tab-bar {
   .tab-numbers-style(@content) {
-    // Do not apply in compact mode
-    @media (min-width: 1280px) and (min-height: 800px) {
-      .close-icon {
-        // Do not hide number on "One Dark" theme
-        transform: none;
+    .close-icon {
+      // Do not hide number on "One Dark" theme
+      transform: none;
 
-        // No animation on "Material UI"
-        -webkit-animation: initial;
+      // No animation on "Material UI"
+      -webkit-animation: initial;
 
-        &::before {
-          font-family: Helvetica, Arial, sans-serif;
-          content: @content;
-          font-size: 12px;
-          font-weight: bold;
-        }
+      &::before {
+        font-family: Helvetica, Arial, sans-serif;
+        content: @content;
+        font-size: 12px;
+        font-weight: bold;
       }
     }
+  }
+
+  .tab .title {
+    -webkit-mask: linear-gradient(to left, rgba(0, 0, 0, 0), #000000 1em) no-repeat;
+    -webkit-mask-position: -1em 0;
   }
 
   .tab:not(:hover):not(.hover) {
