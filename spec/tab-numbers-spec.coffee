@@ -23,7 +23,7 @@ describe 'Tab Numbers', ->
     it 'shows numbers on tabs', ->
       tabsIcons = workspaceElement.querySelectorAll '.pane .tab .close-icon'
 
-      expect(workspaceElement.querySelectorAll('.pane > .tab-bar').length).toBe 1
+      expect(workspaceElement.querySelectorAll('.pane > .tab-bar').length).toBe 4
       expect(getComputedStyle(tabsIcons[0], ':before').content).toBe '\"1\"'
       expect(getComputedStyle(tabsIcons[1], ':before').content).toBe '\"2\"'
 
