@@ -1,5 +1,7 @@
 # Tab Numbers Atom Package [![Build Status](https://travis-ci.org/mrodalgaard/atom-tab-numbers.svg)](https://travis-ci.org/mrodalgaard/atom-tab-numbers)
 
+> DEPRECATED: This package will no longer be maintained by me since I have switched permanently to VSCode.
+
 Numbers on your Atom tabs for quick jumping (cmd/ctrl + 1..9).
 
 Unobtrusively replacing the tab close icons when not in focus / mouse over.
